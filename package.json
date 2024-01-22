@@ -18,6 +18,8 @@
   "homepage": "https://github.com/sampoder/untitled-server-code#readme",
   "dependencies": {
     "@vercel/kv": "^1.0.1",
+    "isomorphic-unfetch": "^4.0.2",
+    "node-fetch": "^3.3.2",
     "uuidv4": "^6.2.13"
   }
 }

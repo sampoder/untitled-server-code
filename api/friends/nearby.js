@@ -1,5 +1,6 @@
 import { kv } from "@vercel/kv";
 const { uuid } = require("uuidv4");
+import "isomorphic-unfetch";
 
 async function isNearby(friend, location){
   let record = await kv.get(friend);
@@ -10,8 +11,8 @@ export default async function handler(req, res){
   const { username, token } = req.body;
   let user = await kv.get(username);
   if(token == user.token){
-    let friends = await values.reduce(async (nearby, friend) => {
-      const result = await isNearby(friend);
+    let friends = await user.friends.reduce(async (nearby, friend) => {
+      const result = await isNearby(friend, user.location);
       if (!result) return nearby;
       return (await nearby).concat(friend);
     }, []);

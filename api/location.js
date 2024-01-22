@@ -1,5 +1,6 @@
 import { kv } from "@vercel/kv";
 const { uuid } = require("uuidv4");
+import "isomorphic-unfetch";
 
 export default async function handler(req, res){
   const { username, token, location } = req.body;
